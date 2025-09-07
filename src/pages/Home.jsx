@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Header from '../components/Header'
+import AppDownload from '../components/AppDownload'
 // import ExploreMenu from '../components/ExploreMenu'
 
 function Home() {
@@ -8,6 +9,7 @@ function Home() {
             <div>
                 <Header />
                 {/* <ExploreMenu category={category} setCategory={setCategory}/> */}
+                <AppDownload/>
             </div>
         )
 }

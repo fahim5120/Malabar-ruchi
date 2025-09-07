@@ -1,6 +1,6 @@
 import React from "react";
 import { menu_list } from "../assets/assets";
-import FoodList from "./FoodList";
+import FoodDisplay from "../components/FoodDisplay";
 
 function ExploreMenu({ category, setCategory }) {
   return (
@@ -53,7 +53,7 @@ function ExploreMenu({ category, setCategory }) {
       </div>
 
       {/* Food list */}
-      <FoodList />
+      <FoodDisplay category={category}/>
     </div>
   );
 }
