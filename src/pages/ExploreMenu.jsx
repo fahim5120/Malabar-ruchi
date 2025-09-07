@@ -1,7 +1,6 @@
 import React from "react";
 import { menu_list } from "../assets/assets";
 import FoodDisplay from "../components/FoodDisplay";
-
 function ExploreMenu({ category, setCategory }) {
   return (
     <div className="py-10 bg-gradient-to-b from-amber-50 to-amber-100">

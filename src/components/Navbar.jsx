@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { Link } from "react-router-dom";
+import { StoreContext } from "./StoreContext";
 
-function Navbar() {
-  const [menu, setMenu] = useState("home");
+
+function Navbar({setShowLogin}) {
+const [menu, setMenu] = useState("home");
+const{getTotalCartAmount,cartItems}=useContext(StoreContext)
 
   return (
+    <>
+    
     <nav className="w-full flex items-center justify-between bg-amber-900 text-white px-6 py-4 shadow-md">
       {/* Logo */}
       <div className="flex items-center">
-        <img src={assets.logo} alt="logo" className="h-10 w-auto" />
+       <Link to='home'><img src={assets.logo} alt="logo" className="h-10 w-auto" /></Link> 
       </div>
 
     
@@ -63,23 +68,35 @@ function Navbar() {
         />
 
         {/* Basket Icon */}
-        <div className="relative">
-          <img
-            src={assets.basketIcon}
-            alt="basketIcon"
-            className="h-7 w-7 cursor-pointer hover:opacity-80"
-          />
-          {/* Dot (cart notification) */}
-          <div className="absolute top-0 right-0 h-3 w-3 rounded-full bg-white border-2 border-amber-900"></div>
-        </div>
+      {/* Basket Icon */}
+<div className="relative">
+  <Link to="/cart">
+    <img
+      src={assets.basketIcon}
+      alt="basketIcon"
+      className="h-7 w-7 cursor-pointer hover:opacity-80"
+    />
+  </Link>
+
+  {/* Dot (cart notification) */}
+  {getTotalCartAmount() > 0 && (
+         <div className="absolute -top-1 -right-1 h-4 w-4 flex items-center justify-center 
+                    rounded-full bg-amber-900 text-white text-[10px] font-bold shadow-md">
+        {Object.values(cartItems).reduce((a, b) => a + b, 0)}
+      </div>
+    )}
+  </div>
+
 
         {/* Sign in Button */}
-        <button className="bg-white text-amber-900 px-4 py-2 rounded-lg font-semibold hover:bg-amber-100 transition">
+        <button className="bg-white text-amber-900 px-4 py-2 rounded-lg font-semibold hover:bg-amber-100 transition" onClick={()=>setShowLogin(true)}>
           Sign in
         </button>
       </div>
     </nav>
+    </>
   );
 }
+
 
 export default Navbar;

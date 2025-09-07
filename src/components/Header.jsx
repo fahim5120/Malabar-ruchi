@@ -1,7 +1,9 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate=useNavigate()
   return (
     <div
       className="relative h-[34vw] w-full flex items-center justify-center text-center bg-cover bg-center shadow-lg"
@@ -16,7 +18,7 @@ function Header() {
           This menu offers delicious Kerala dishes, from spicy meals to sweet
           desserts and refreshing drinks.
         </p>
-        <button className="bg-white text-amber-900 px-6 py-3 font-semibold shadow-md hover:bg-amber-100 transition">
+        <button className="bg-white text-amber-900 px-6 py-3 font-semibold shadow-md hover:bg-amber-100 transition"onClick={()=>navigate('/menu')}>
           View Menu
         </button>
       </div>

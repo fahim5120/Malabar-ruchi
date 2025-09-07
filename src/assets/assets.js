@@ -11,6 +11,7 @@ import instagramIcon from "./instagramIcon.png"
 import youtubeIcon from "./youtubeIcon.png"
 import appStore from "./appStore.png"
 import playStore from "./playStore.png"
+import crossIcon from "./crossIcon.png"
 
 
 import menu_1 from './menu_1.jpg'
@@ -44,7 +45,8 @@ export const assets={
      instagramIcon,
       youtubeIcon,
       appStore,
-      playStore 
+      playStore ,
+      crossIcon
 
       
 }
