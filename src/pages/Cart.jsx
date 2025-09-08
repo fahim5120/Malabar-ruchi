@@ -127,13 +127,13 @@ function Cart() {
           <p className="text-[#5a4634] font-medium mb-3">
             If you have a promo code, enter it here
           </p>
-          <div className="flex flex-col sm:flex-row gap-2">
+          <div className="flex flex-col sm:flex-row gap-3 w-full">
             <input
               type="text"
               placeholder="Promo code"
-              className="flex-1 px-4 py-2 border border-[#d6c0b3] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#a37c5b]"
+              className="flex-1 px-4 py-2 border border-[#d6c0b3] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#a37c5b] w-full"
             />
-            <button className="bg-[#a37c5b] hover:bg-[#8c6748] text-white px-5 py-2 rounded-xl font-semibold transition">
+            <button className="bg-[#a37c5b] hover:bg-[#8c6748] text-white px-5 py-2 rounded-xl font-semibold transition w-full sm:w-auto">
               Submit
             </button>
           </div>
