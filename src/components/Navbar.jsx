@@ -76,7 +76,7 @@ function Navbar({ setShowLogin }) {
               />
             </Link>
 
-            {/* Dot (cart notification) */}
+            {/* Cart notification dot */}
             {getTotalCartAmount() > 0 && (
               <div className="absolute -top-1 -right-1 h-4 w-4 flex items-center justify-center 
                 rounded-full bg-amber-900 text-white text-[10px] font-bold shadow-md">
@@ -85,7 +85,7 @@ function Navbar({ setShowLogin }) {
             )}
           </div>
 
-          {/* Sign in Button (hidden on very small screens) */}
+          {/* Sign in Button (hidden on xs) */}
           <button
             className="hidden sm:block bg-white text-amber-900 px-3 sm:px-4 py-2 rounded-lg font-semibold hover:bg-amber-100 transition"
             onClick={() => setShowLogin(true)}
@@ -106,7 +106,7 @@ function Navbar({ setShowLogin }) {
 
         {/* Mobile Dropdown */}
         {mobileOpen && (
-          <div className="absolute top-full left-0 w-full bg-amber-800 flex flex-col items-center gap-4 py-4 md:hidden z-50">
+          <div className="absolute top-[100%] left-0 w-full bg-amber-800 flex flex-col items-center gap-4 py-4 md:hidden z-[999] shadow-lg">
             <Link
               to="/"
               onClick={() => {
@@ -152,7 +152,7 @@ function Navbar({ setShowLogin }) {
               Contact Us
             </Link>
 
-            {/* Sign in also inside dropdown for mobile */}
+            {/* Sign in inside dropdown */}
             <button
               className="bg-white text-amber-900 px-4 py-2 rounded-lg font-semibold hover:bg-amber-100 transition"
               onClick={() => {
