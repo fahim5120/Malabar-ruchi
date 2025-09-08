@@ -17,7 +17,7 @@ function App() {
       path:"/",
       element:<Layout/>,
       children:[
-        {path:"home",element:<Home/>},
+        {path:"/",element:<Home/>},
         {path:"contact",element:<Contact/>},
         {path: "menu", element: <ExploreMenu category={category} setCategory={setCategory} />},
         {path:"cart",element:<Cart/>},

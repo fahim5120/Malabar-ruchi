@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import { Outlet } from 'react-router-dom'
 import Footer from './Footer'
 import LoginPopup from './LoginPopup'
-import Header from './Header'
+
 
 
 
@@ -15,7 +15,7 @@ function Layout() {
       {showLogin ? <LoginPopup setShowLogin={setShowLogin}/> : <></>}
 
         <Navbar setShowLogin={setShowLogin}/>
-        <Header/>
+        
         <Outlet/>
         <Footer/>
     </div>
