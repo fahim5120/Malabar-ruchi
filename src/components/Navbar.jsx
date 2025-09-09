@@ -2,11 +2,18 @@ import React, { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { Link } from "react-router-dom";
 import { StoreContext } from "./StoreContext";
+import { DarkModeContext } from "./DarkModeContext";
+
+
+
 
 function Navbar({ setShowLogin }) {
   const [menu, setMenu] = useState("home");
   const [mobileOpen, setMobileOpen] = useState(false);
   const { getTotalCartAmount, cartItems } = useContext(StoreContext);
+  
+  
+
 
   return (
     <>
@@ -17,6 +24,9 @@ function Navbar({ setShowLogin }) {
             <img src={assets.logo} alt="logo" className="h-8 sm:h-10 w-auto" />
           </Link>
         </div>
+
+        {/* .....dark..mode.. */}
+        
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-8 text-lg font-medium">
@@ -162,7 +172,9 @@ function Navbar({ setShowLogin }) {
             >
               Sign in
             </button>
+            
           </div>
+          
         )}
       </nav>
     </>
@@ -170,3 +182,6 @@ function Navbar({ setShowLogin }) {
 }
 
 export default Navbar;
+
+
+

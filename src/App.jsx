@@ -6,6 +6,11 @@ import Contact from './pages/Contact'
 import ExploreMenu from './pages/ExploreMenu'
 import Cart from './pages/Cart'
 import PlaceOrder from './pages/PlaceOrder'
+import AdminLayout from './components/AdminLayout'
+import Add from './pages/Add'
+import List from './pages/List'
+import Orders from './pages/Orders'
+
 
 
 
@@ -28,7 +33,20 @@ function App() {
 
 
       ]
+    },
+
+
+    // Admin routes
+    {
+      path:"/admin",
+      element:<AdminLayout />,
+      children:[
+        {path:"add",element: <Add/>},
+        { path: "list", element:  <List/> },
+        { path: "orders", element: <Orders/> },
+      ]
     }
+    
   ])
   return (
     <>
@@ -39,3 +57,7 @@ function App() {
 }
 
 export default App
+
+
+
+
