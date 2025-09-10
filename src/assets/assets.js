@@ -20,8 +20,8 @@ import basketIcon from "./basketIcon.png";
 import crossIcon from "./crossIcon.png";
 import facebookIcon from "./facebookIcon.webp";
 import instagramIcon from "./instagramIcon.png";
-import orderIcon from "./order_Icon.png";
-import orderIconGreen from "./orderIcon.png"; // duplicate? keep one if needed
+import orderIcon from "./order_icon.png";
+// import orderIconGreen from "./orderIcon.png"; // duplicate? keep one if needed
 import parcelIcon from "./parcel_icon.png";
 import playStore from "./playStore.png";
 import appStore from "./appStore.png";
@@ -56,7 +56,7 @@ export const assets = {
   facebookIcon,
   instagramIcon,
   orderIcon,
-  orderIconGreen,
+  // orderIconGreen,
   parcelIcon,
   playStore,
   appStore,
