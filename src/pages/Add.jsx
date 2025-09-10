@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { assets } from "../assets/assets";
+ import {  toast } from 'react-toastify';
+ import 'react-toastify/dist/ReactToastify.css'
 
 function Add() {
     const [image,setImage]=useState(false)
@@ -31,6 +33,7 @@ const onSubmitHandler=async(e)=>{
 //  formData.append("category",data.category)
 //  formData.append("image",image)
 const formData = {
+  id: Date.now(),
       name: data.name,
       description: data.description,
       price: Number(data.price),
@@ -44,7 +47,8 @@ const formData = {
     existingProducts.push(formData);
     localStorage.setItem("products", JSON.stringify(existingProducts));
 
-    alert("Your data is saved local Storage");
+ toast.success("Your data saved in local Storege")
+ 
 
     // Reset form
     setData({ name: "", description: "", price: "", category: "Breakfast" });
