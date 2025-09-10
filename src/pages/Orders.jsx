@@ -1,4 +1,3 @@
-// src/pages/Orders.jsx
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -57,7 +56,7 @@ function Orders() {
     toast.success("Order deleted!");
   };
 
-  // Helper to render items whether array or object
+  // Helper to render items
   const renderItems = (items) => {
     if (Array.isArray(items)) {
       return items.map((i, idx) => (
@@ -92,14 +91,14 @@ function Orders() {
           value={form.customerName}
           onChange={onChange}
           placeholder="Customer Name"
-          className="w-full border rounded px-3 py-2"
+          className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#d9c7b1]"
         />
         <input
           name="items"
           value={form.items}
           onChange={onChange}
-          placeholder="Items (e.g. Dosa , Tea )"
-          className="w-full border rounded px-3 py-2"
+          placeholder="Items (e.g. Dosa x2, Tea x1)"
+          className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#d9c7b1]"
         />
         <input
           name="total"
@@ -107,18 +106,19 @@ function Orders() {
           onChange={onChange}
           placeholder="Total Price"
           type="number"
-          className="w-full border rounded px-3 py-2"
+          className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#d9c7b1]"
         />
         <button
           type="submit"
-          className="w-full bg-[#d9c7b1] hover:bg-[#cbb29c] text-white py-2 rounded"
+          className="w-full bg-[#d9c7b1] hover:bg-[#cbb29c] text-white py-2 rounded transition"
         >
           Add Order
         </button>
       </form>
 
       {/* Orders List */}
-      <div className="overflow-x-auto bg-white shadow rounded-xl border border-[#e6dcd0]">
+      <div className="overflow-x-auto">
+        {/* Desktop Table Header */}
         <div className="hidden md:grid grid-cols-5 bg-[#d9c7b1] text-white font-semibold p-4 rounded-t-xl">
           <p>Customer</p>
           <p>Items</p>
@@ -134,20 +134,31 @@ function Orders() {
             orders.map((order) => (
               <div
                 key={order.id}
-                className="grid grid-cols-1 md:grid-cols-5 items-center gap-4 p-4 hover:bg-[#f5efe6] transition"
+                className="grid grid-cols-1 md:grid-cols-5 gap-2 p-4 hover:bg-[#f5efe6] transition rounded-lg"
               >
-                <p>{order.customerName || order.info?.firstName}</p>
+                {/* Customer */}
+                <p className="font-medium text-[#5a4634]">{order.customerName}</p>
+
+                {/* Items */}
                 <div>{renderItems(order.items)}</div>
-                <p>₹{order.total || order.info?.total || "N/A"}</p>
-                <p>
-                  {new Date(order.date || order.info?.date).toLocaleString()}
+
+                {/* Total */}
+                <p className="text-[#8b5e3c] font-semibold">₹{order.total}</p>
+
+                {/* Date */}
+                <p className="text-gray-500 text-sm">
+                  {new Date(order.date).toLocaleString()}
                 </p>
-                <button
-                  onClick={() => removeOrder(order.id)}
-                  className="bg-[#d9c7b1] hover:bg-[#cbb29c] text-white py-1 px-3 rounded"
-                >
-                  Delete
-                </button>
+
+                {/* Action */}
+                <div className="flex justify-start md:justify-center mt-2 md:mt-0">
+                  <button
+                    onClick={() => removeOrder(order.id)}
+                    className="bg-[#d9c7b1] hover:bg-[#cbb29c] text-white py-1 px-3 rounded w-full md:w-auto transition"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             ))
           )}

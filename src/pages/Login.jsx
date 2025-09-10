@@ -1,7 +1,5 @@
-// src/pages/Login.jsx
 import React, { useState, useContext } from "react";
 import { toast } from "react-toastify";
-import { findUserByEmail, validatePassword } from "../utils/authUtils";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +8,7 @@ function Login() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
-  const [role, setRole] = useState("user"); // default role
+  const [role, setRole] = useState("user");
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -23,24 +21,21 @@ function Login() {
       return;
     }
 
-    const user = findUserByEmail(email);
-    if (!user || !validatePassword(password, user.password)) {
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const user = users.find((u) => u.email === email);
+
+    if (!user || user.password !== password) {
       toast.error("Invalid email or password");
       return;
     }
 
     setLoading(true);
-    try {
-      login({ id: user.id, name: user.name, email: user.email, role }); // save role in context
+    setTimeout(() => {
+      login({ id: user.id, name: user.name, email: user.email, role });
       toast.success("Login successful!");
-      if (role === "admin") navigate("/admin");
-      else navigate("/home");
-    } catch (err) {
-      console.error(err);
-      toast.error("Login failed");
-    } finally {
+      navigate(role === "admin" ? "/admin" : "/home");
       setLoading(false);
-    }
+    }, 500);
   };
 
   return (
@@ -70,7 +65,6 @@ function Login() {
           />
         </label>
 
-        {/* Role Selection buttons moved below inputs */}
         <div className="flex justify-between mb-4">
           <button
             type="button"

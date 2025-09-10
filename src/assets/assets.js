@@ -35,6 +35,15 @@ import person1 from "./person1.jpeg"
 import person2 from "./person2.jpg"
 import person3 from "./person3.webp"
 import phoneIcon from "./phoneIcon.jpg"
+import branch1 from "./branch1.jpg"
+import branch2 from "./branch2.jpg"
+import branch3 from "./branch3.jpg"
+import branch4 from "./branch4.jpg"
+import branch5 from "./branch5.jpg"
+import branch6 from "./branch6.jpg"
+
+
+
 
 // Menu images
 import menu_1 from "./menu_1.jpg";
@@ -73,7 +82,15 @@ export const assets = {
   phoneIcon,
   person1,
   person2,
-  person3
+  person3,
+  branch1,
+  branch2,
+  branch3,
+  branch4,
+  branch5,
+  branch6,
+
+  
  
 };
 

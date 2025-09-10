@@ -1,27 +1,26 @@
 import React from "react";
-import { assets } from "../assets/assets";
+import { Menu } from "lucide-react"; // or any hamburger icon
 
-function AdminNavbar() {
+function AdminNavbar({ toggleSidebar }) {
   return (
-    <div className="w-full bg-white shadow-md px-4 sm:px-6 py-3 flex items-center justify-between">
-      {/* Left: Logo + Title */}
-      <div className="flex items-center gap-2 sm:gap-3">
-        <img
-          src={assets.logo}
-          alt="logo"
-          className="h-8 sm:h-10 w-auto object-contain"
-        />
-        {/* Hide text on very small screens */}
-        
+    <nav className="bg-white shadow-md flex items-center justify-between px-4 py-3 md:px-6">
+      {/* Mobile hamburger */}
+      <div className="md:hidden">
+        <button onClick={toggleSidebar} className="text-gray-700 hover:text-gray-900">
+          <Menu size={24} />
+        </button>
       </div>
 
-      {/* Right: Profile */}
-      <img
-        src={assets.profileImage}
-        alt="profile"
-        className="h-8 w-8 sm:h-10 sm:w-10 rounded-full border border-gray-300 cursor-pointer hover:scale-105 transition"
-      />
-    </div>
+      {/* Logo / title */}
+      <div className="text-lg font-semibold text-[#5a4634]">
+        Admin Dashboard
+      </div>
+
+      {/* Desktop right-side items (optional) */}
+      <div className="hidden md:flex items-center space-x-4">
+        {/* You can add notifications, profile dropdown, etc. here */}
+      </div>
+    </nav>
   );
 }
 

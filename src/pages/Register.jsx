@@ -1,48 +1,49 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { getUsers, findUserByEmail, createUser } from "../utils/authUtils";
-import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
-  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", email: "", password: "", confirm: "" });
   const [loading, setLoading] = useState(false);
-  const [registered, setRegistered] = useState(false); // <-- registration state
+  const [registered, setRegistered] = useState(false);
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
     const { name, email, password, confirm } = form;
+
     if (!name || !email || !password || !confirm) {
-      toast.error("Please fill all");
+      toast.error("Please fill all fields");
       return;
     }
     if (password.length < 6) {
-      toast.error("Password at least 6 characters");
+      toast.error("Password must be at least 6 characters");
       return;
     }
     if (password !== confirm) {
-      toast.error("Password not match");
+      toast.error("Passwords do not match");
       return;
     }
-    if (findUserByEmail(email)) {
-      toast.error("This email already registered");
+
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const existingUser = users.find((u) => u.email === email);
+    if (existingUser) {
+      toast.error("Email already registered");
       return;
     }
+
+    const newUser = { id: Date.now(), name, email, password };
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+
     setLoading(true);
-    try {
-      const user = createUser({ name, email, password });
-      toast.success("Registration successful!");
-      setRegistered(true); // show login button
-    } catch (err) {
-      console.error(err);
-      toast.error("Registration failed");
-    } finally {
+    setTimeout(() => {
       setLoading(false);
-    }
+      setRegistered(true);
+      toast.success("Registration successful!");
+    }, 1000);
   };
 
   return (
@@ -54,21 +55,47 @@ function Register() {
           <>
             <label className="block mb-2">
               <span className="text-sm text-gray-600">Name</span>
-              <input name="name" value={form.name} onChange={onChange} className="mt-1 w-full border rounded px-3 py-2 focus:outline-none" />
+              <input
+                name="name"
+                value={form.name}
+                onChange={onChange}
+                className="mt-1 w-full border rounded px-3 py-2 focus:outline-none"
+              />
             </label>
             <label className="block mb-2">
               <span className="text-sm text-gray-600">Email</span>
-              <input name="email" type="email" value={form.email} onChange={onChange} className="mt-1 w-full border rounded px-3 py-2 focus:outline-none" />
+              <input
+                name="email"
+                type="email"
+                value={form.email}
+                onChange={onChange}
+                className="mt-1 w-full border rounded px-3 py-2 focus:outline-none"
+              />
             </label>
             <label className="block mb-2">
               <span className="text-sm text-gray-600">Password</span>
-              <input name="password" type="password" value={form.password} onChange={onChange} className="mt-1 w-full border rounded px-3 py-2 focus:outline-none" />
+              <input
+                name="password"
+                type="password"
+                value={form.password}
+                onChange={onChange}
+                className="mt-1 w-full border rounded px-3 py-2 focus:outline-none"
+              />
             </label>
             <label className="block mb-4">
               <span className="text-sm text-gray-600">Confirm Password</span>
-              <input name="confirm" type="password" value={form.confirm} onChange={onChange} className="mt-1 w-full border rounded px-3 py-2 focus:outline-none" />
+              <input
+                name="confirm"
+                type="password"
+                value={form.confirm}
+                onChange={onChange}
+                className="mt-1 w-full border rounded px-3 py-2 focus:outline-none"
+              />
             </label>
-            <button type="submit" className="w-full bg-[#d9c7b1] hover:bg-[#cbb29c] text-white py-2 rounded font-semibold">
+            <button
+              type="submit"
+              className="w-full bg-[#d9c7b1] hover:bg-[#cbb29c] text-white py-2 rounded font-semibold"
+            >
               {loading ? "Registering..." : "Register"}
             </button>
           </>
@@ -89,4 +116,3 @@ function Register() {
 }
 
 export default Register;
-

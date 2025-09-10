@@ -1,38 +1,12 @@
-// src/utils/authUtils.js
-import bcrypt from "bcryptjs";
+// utils/authUtils.js
+export const getUsers = () => JSON.parse(localStorage.getItem("users") || "[]");
 
-// get users array from localStorage
-export const getUsers = () => {
-  return JSON.parse(localStorage.getItem("users")) || [];
-};
+export const findUserByEmail = (email) => getUsers().find(u => u.email === email);
 
-// save users array back
-export const saveUsers = (users) => {
-  localStorage.setItem("users", JSON.stringify(users));
-};
-
-// find user by email
-export const findUserByEmail = (email) => {
-  const users = getUsers();
-  return users.find((u) => u.email.toLowerCase() === email.toLowerCase());
-};
-
-// create user (hash password)
 export const createUser = ({ name, email, password }) => {
-  const hashed = bcrypt.hashSync(password, 8);
-  const user = {
-    id: Date.now(),
-    name,
-    email,
-    password: hashed,
-  };
   const users = getUsers();
-  users.push(user);
-  saveUsers(users);
-  return user;
-};
-
-// validate password
-export const validatePassword = (plain, hashed) => {
-  return bcrypt.compareSync(plain, hashed);
+  const newUser = { id: Date.now(), name, email, password };
+  users.push(newUser);
+  localStorage.setItem("users", JSON.stringify(users));
+  return newUser;
 };
