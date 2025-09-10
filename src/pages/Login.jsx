@@ -39,8 +39,18 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#f5efe6] p-4">
-      <form onSubmit={onSubmit} className="w-full max-w-md bg-white p-6 rounded-2xl shadow">
+    <div
+      className="relative min-h-screen flex items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: "url('/food-bg.jpg')" }} 
+    >
+      {/* overlay (dark effect for readability) */}
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      {/* login form */}
+      <form
+        onSubmit={onSubmit}
+        className="relative z-10 w-full max-w-md bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow"
+      >
         <h2 className="text-2xl font-bold mb-4 text-[#5a4634]">Login</h2>
 
         <label className="block mb-2">

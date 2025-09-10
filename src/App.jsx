@@ -99,7 +99,7 @@ function App() {
       children: [
         { path: "/", element: <RequireAuthRedirect /> }, // redirect based on login
         { path: "home", element: <ProtectedRoute><Home /></ProtectedRoute> },
-         { path: "about", element: <About /> },
+         { path: "about", element: <About/> },
         { path: "contact", element: <Contact /> },
         { path: "menu", element: <ExploreMenu category={category} setCategory={setCategory} /> },
         { path: "cart", element: <Cart /> },
