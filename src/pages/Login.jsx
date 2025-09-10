@@ -33,7 +33,6 @@ function Login() {
     try {
       login({ id: user.id, name: user.name, email: user.email, role }); // save role in context
       toast.success("Login successful!");
-      // Redirect based on role
       if (role === "admin") navigate("/admin");
       else navigate("/home");
     } catch (err) {
@@ -48,28 +47,6 @@ function Login() {
     <div className="min-h-screen flex items-center justify-center bg-[#f5efe6] p-4">
       <form onSubmit={onSubmit} className="w-full max-w-md bg-white p-6 rounded-2xl shadow">
         <h2 className="text-2xl font-bold mb-4 text-[#5a4634]">Login</h2>
-
-        {/* Role Selection */}
-        <div className="flex justify-between mb-4">
-          <button
-            type="button"
-            onClick={() => setRole("user")}
-            className={`px-4 py-2 rounded font-semibold ${
-              role === "user" ? "bg-[#8b5e34] text-white" : "bg-gray-200 text-gray-700"
-            }`}
-          >
-            User
-          </button>
-          <button
-            type="button"
-            onClick={() => setRole("admin")}
-            className={`px-4 py-2 rounded font-semibold ${
-              role === "admin" ? "bg-[#8b5e34] text-white" : "bg-gray-200 text-gray-700"
-            }`}
-          >
-            Admin
-          </button>
-        </div>
 
         <label className="block mb-2">
           <span className="text-sm text-gray-600">Email</span>
@@ -92,6 +69,28 @@ function Login() {
             className="mt-1 w-full border rounded px-3 py-2 focus:outline-none"
           />
         </label>
+
+        {/* Role Selection buttons moved below inputs */}
+        <div className="flex justify-between mb-4">
+          <button
+            type="button"
+            onClick={() => setRole("user")}
+            className={`px-4 py-2 rounded font-semibold ${
+              role === "user" ? "bg-[#8b5e34] text-white" : "bg-gray-200 text-gray-700"
+            }`}
+          >
+            User
+          </button>
+          <button
+            type="button"
+            onClick={() => setRole("admin")}
+            className={`px-4 py-2 rounded font-semibold ${
+              role === "admin" ? "bg-[#8b5e34] text-white" : "bg-gray-200 text-gray-700"
+            }`}
+          >
+            Admin
+          </button>
+        </div>
 
         <button
           type="submit"

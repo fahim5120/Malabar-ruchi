@@ -11,6 +11,10 @@ import profileImage from "./profileImage.png";
 import addIcon from "./addIcon.png";
 import addIconGreen from "./addIconGreen.png";
 import addIconWhite from "./addIconWhite.png";
+import clockIcon from "./clockIcon.jpg";
+import contactImg from "./contactImg.webp";
+import emailIcon from "./emailIcon.jpg";
+import locationIcon from "./locationIcon.jpg";
 
 import basketIcon from "./basketIcon.png";
 import crossIcon from "./crossIcon.png";
@@ -26,6 +30,11 @@ import removeIconRed from "./removeIconRed.png";
 import searchIcon from "./searchIcon.jpg";
 import uploadArea from "./upload_area.png";
 import youtubeIcon from "./youtubeIcon.png";
+import GPay from "./GPay.jpg"
+import person1 from "./person1.jpeg"
+import person2 from "./person2.jpg"
+import person3 from "./person3.webp"
+import phoneIcon from "./phoneIcon.jpg"
 
 // Menu images
 import menu_1 from "./menu_1.jpg";
@@ -56,6 +65,15 @@ export const assets = {
   searchIcon,
   uploadArea,
   youtubeIcon,
+  GPay,
+  clockIcon ,
+  contactImg,
+  emailIcon,
+  locationIcon,
+  phoneIcon,
+  person1,
+  person2,
+  person3
  
 };
 
