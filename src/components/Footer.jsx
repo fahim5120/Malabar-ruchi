@@ -74,11 +74,7 @@ function Footer() {
                 About Us
               </Link>
             </li>
-            <li>
-              <Link to="/delivery" className="hover:text-[#a47551] transition">
-                Delivery
-              </Link>
-            </li>
+           
             <li>
               <Link to="/privacy" className="hover:text-[#a47551] transition">
                 Privacy Policy
